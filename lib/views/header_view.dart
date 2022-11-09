@@ -9,7 +9,7 @@ class HeaderView extends StatelessWidget {
     return Container(
       color: WayColor.blueSecondary,
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(16),
         child: Row(
           //Com o mainAxisAlignment eu consigo fazer o alinhamento no eixo principal da linhha, que é o sentido horizontal.
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -23,7 +23,7 @@ class HeaderView extends StatelessWidget {
               children: [
                 Container(
                   width: 300,
-                  height: 50,
+                  height: 45,
                   decoration: BoxDecoration(
                     color: WayColor.bluePrimary,
                     borderRadius: BorderRadius.circular(5),
@@ -32,7 +32,7 @@ class HeaderView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       const Icon(
-                        Icons.shopping_bag_outlined,
+                        Icons.storefront_sharp,
                         color: WayColor.green,
                       ),
                       Padding(
@@ -47,16 +47,14 @@ class HeaderView extends StatelessWidget {
                             ),
                             Text(
                               'Matriz',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12
-                              ),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12),
                             ),
                           ],
                         ),
                       ),
                       const Icon(
-                        Icons.arrow_circle_right_outlined,
+                        Icons.launch,
                         color: Colors.white,
                       ),
                     ],
@@ -65,14 +63,14 @@ class HeaderView extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5),
                   child: Icon(
-                    Icons.shopping_bag_outlined,
-                    color: WayColor.green,
+                    Icons.person_sharp,
+                    color: Colors.white,
                     size: 42,
                   ),
                 ),
                 const Icon(
-                  Icons.shopping_bag_outlined,
-                  color: WayColor.green,
+                  Icons.settings,
+                  color: Colors.white,
                   size: 42,
                 ),
               ],

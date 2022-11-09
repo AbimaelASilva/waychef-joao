@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:waychef_joao/views/home_view.dart';
 
-import 'views/home_view.dart';
 
 void main() {
   runApp(const WayChefApp());
