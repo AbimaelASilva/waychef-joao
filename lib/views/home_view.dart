@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waychef_joao/views/caminho_view.dart';
 import 'package:waychef_joao/views/new_product_option.dart';
-import 'package:waychef_joao/views/product_listing.dart';
+import 'package:waychef_joao/views/product_list.dart';
 
 import 'menu_view.dart';
 import 'header_view.dart';
@@ -19,7 +19,7 @@ class HomeView extends StatelessWidget {
           const MenuView(),
           const CaminhoView(),
           const NewProductOption(),
-          ProductListing(),
+          ProductList(),
         ],
       ),
     );

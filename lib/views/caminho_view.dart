@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waychef_joao/ui/way_colors.dart';
 
 class CaminhoView extends StatelessWidget {
   const CaminhoView({super.key});
@@ -15,13 +16,13 @@ class CaminhoView extends StatelessWidget {
               children: const [
                 Icon(
                   Icons.home,
-                  color: Colors.yellow,
+                  color: WayColor.grey,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.yellow,
+                      color: WayColor.grey,
                     size: 14,
                   ),
                 ),
@@ -30,7 +31,7 @@ class CaminhoView extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.yellow,
+               color: WayColor.grey,
                     size: 14,
                   ),
                 ),
@@ -39,7 +40,7 @@ class CaminhoView extends StatelessWidget {
             ),
             const Icon(
               Icons.question_mark_rounded,
-              color: Colors.yellow,
+              color: WayColor.grey,
             ),
           ],
         ));

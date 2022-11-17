@@ -40,12 +40,4 @@ class ProductModel {
         priceSales: 0.0,
         costprice: 0.0,
       );
-
-  // Map<String, dynamic> toMap() => {
-  //       "active": active,
-  //       "internalCode": internalCode,
-  //       "code": code,
-  //       "description": description,
-  //       "unit": unit,
-  //     };
 }

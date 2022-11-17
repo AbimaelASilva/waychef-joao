@@ -7,15 +7,19 @@ class MenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       color: WayColor.bluePrimary,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6),
-        child: Row(
+        child: Wrap(
+          
+          direction: Axis.horizontal,
           children: [
             _menuOption(Icons.data_saver_off, 'Dashboard', 8, false),
             _menuOption(Icons.food_bank, 'Produtos', 32, true),
             _menuOption(Icons.person_outline_sharp, 'Clientes', 32, true),
-            _menuOption(Icons.chrome_reader_mode_outlined, 'Finanças', 32, true),
+            _menuOption(
+                Icons.chrome_reader_mode_outlined, 'Finanças', 32, true),
             _menuOption(Icons.search, 'Consultas Rápidas', 32, true),
             _menuOption(Icons.analytics, 'Análises e Relatórios', 32, true),
           ],
@@ -31,6 +35,7 @@ class MenuView extends StatelessWidget {
     bool showRightIcon,
   ) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Padding(
           padding: EdgeInsets.only(left: leftPadding, right: 8),
@@ -43,6 +48,7 @@ class MenuView extends StatelessWidget {
         Text(
           text,
           style: const TextStyle(color: Colors.white),
+          maxLines: 1,
         ),
         if (showRightIcon)
           const Icon(
