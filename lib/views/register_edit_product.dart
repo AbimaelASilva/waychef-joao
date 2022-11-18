@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
-import 'package:waychef_joao/ui/way_colors.dart';
+import '../controller/general_controller.dart';
 
 late double _width = 0.0;
 late double _height = 0.0;
 
 class RegisterEditProduct extends StatelessWidget {
-  const RegisterEditProduct({super.key});
+  const RegisterEditProduct({
+    required this.controller,
+    super.key,
+  });
 
+  final GeneralController controller;
   @override
   Widget build(BuildContext context) {
     _width = MediaQuery.of(context).size.width;
@@ -69,8 +73,10 @@ class RegisterEditProduct extends StatelessWidget {
                         _width * 0.2,
                         [
                           _option('Situação do produto', 'Ativo', Icons.arrow_drop_down, _width * 0.2),
-                          _option('Código | Código de Barras', '1', null, _width * 0.2),
-                          _option('Código Interno', '1', null, _width * 0.2),
+                          _option('Código | Código de Barras', controller.productToEditOrRegister.code.toString(), null,
+                              _width * 0.2),
+                          _option('Código Interno', controller.productToEditOrRegister.internalCode.toString(), null,
+                              _width * 0.2),
                           _option('Estoque atual (Geral)', '0,000', Icons.zoom_out_map, _width * 0.2),
                         ],
                       ),
@@ -82,13 +88,17 @@ class RegisterEditProduct extends StatelessWidget {
                             _containerModel(
                               _width * 0.5,
                               [
-                                _option('Descrição', 'X-Salada', null, _width * 0.5),
+                                _option(
+                                    'Descrição', controller.productToEditOrRegister.description, null, _width * 0.5),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    _option('Descrição abreviada', 'X-Salada', null, _width * 0.2),
-                                    _option('Unidade medida', 'UNIDADE(UNID)', Icons.arrow_drop_down, _width * 0.1),
-                                    _option('Grupo', 'LANCHES', Icons.search, _width * 0.1),
+                                    _option('Descrição abreviada', controller.productToEditOrRegister.description, null,
+                                        _width * 0.2),
+                                    _option('Unidade medida', controller.productToEditOrRegister.unit,
+                                        Icons.arrow_drop_down, _width * 0.1),
+                                    _option(
+                                        'Grupo', controller.productToEditOrRegister.group, Icons.search, _width * 0.1),
                                   ],
                                 ),
                                 _option('Tipo', 'Produto para revenda', Icons.arrow_drop_down, _width * 0.3),
@@ -103,8 +113,13 @@ class RegisterEditProduct extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       _option('Mix de preços', 'Nenhum', Icons.arrow_drop_down, _width * 0.14),
-                                      _option('Preço de custo', '0,00', null, _width * 0.14),
-                                      _option('Preço de venda', '0,00', null, _width * 0.14),
+                                      _option('Preço de custo', controller.productToEditOrRegister.costprice.toString(),
+                                          null, _width * 0.14),
+                                      _option(
+                                          'Preço de venda',
+                                          controller.productToEditOrRegister.priceSales.toString(),
+                                          null,
+                                          _width * 0.14),
                                     ],
                                   ),
                                   Row(

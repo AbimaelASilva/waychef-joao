@@ -1,72 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:waychef_joao/models/product_model.dart';
-import 'package:waychef_joao/ui/way_colors.dart';
+
+import '../controller/general_controller.dart';
+import '../ui/way_colors.dart';
 
 class ProductList extends StatelessWidget {
-  ProductList({super.key});
+  const ProductList({
+    required this.controller,
+    super.key,
+  });
 
-  final _productList = [
-    ProductModel(
-      active: true,
-      internalCode: 1,
-      code: 01,
-      description: 'X-Salada',
-      unit: 'UNIDADE(UND)',
-      group: 'LANCHES',
-      priceSales: 16.00,
-      costprice: 9.00,
-    ),
-    ProductModel(
-      active: true,
-      internalCode: 2,
-      code: 02,
-      description: 'X-Tudo',
-      unit: 'UNIDADE(UND)',
-      group: 'LANCHES',
-      priceSales: 18.00,
-      costprice: 10.00,
-    ),
-    ProductModel(
-      active: true,
-      internalCode: 3,
-      code: 03,
-      description: 'X-Bacon',
-      unit: 'UNIDADE(UND)',
-      group: 'LANCHES',
-      priceSales: 18.00,
-      costprice: 10.00,
-    ),
-    ProductModel(
-      active: true,
-      internalCode: 4,
-      code: 04,
-      description: 'Água',
-      unit: 'UNIDADE(UND)',
-      group: 'LANCHES',
-      priceSales: 18.00,
-      costprice: 10.00,
-    ),
-    ProductModel(
-      active: true,
-      internalCode: 5,
-      code: 05,
-      description: 'Refrig. Lata',
-      unit: 'UNIDADE(UND)',
-      group: 'LANCHES',
-      priceSales: 18.00,
-      costprice: 10.00,
-    ),
-    ProductModel(
-      active: true,
-      internalCode: 6,
-      code: 06,
-      description: 'Suco 600ml',
-      unit: 'UNIDADE(UND)',
-      group: 'LANCHES',
-      priceSales: 18.00,
-      costprice: 10.00,
-    ),
-  ];
+  final GeneralController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -259,8 +202,8 @@ class ProductList extends StatelessWidget {
             _headerOption(Icons.filter_3_rounded, 'Ações', 0, true, 1),
           ],
         ),
-        ...List<TableRow>.generate(_productList.length, (index) {
-          final product = _productList[index];
+        ...List<TableRow>.generate(controller.productList.length, (index) {
+          final product = controller.productList[index];
           return TableRow(
               decoration: BoxDecoration(
                 color: index % 2 == 0 ? Colors.grey[200] : Colors.white,
@@ -328,7 +271,10 @@ class ProductList extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: (() {}),
+                      onPressed: () {
+                        controller.setProductToEdit(product);
+                        controller.setShowProductList(value: false);
+                      },
                       icon: Icon(
                         Icons.edit,
                         size: 18,
@@ -336,7 +282,7 @@ class ProductList extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      onPressed: (() {}),
+                      onPressed: () {},
                       icon: Icon(
                         Icons.delete_forever,
                         size: 18,
@@ -350,84 +296,6 @@ class ProductList extends StatelessWidget {
       ],
     );
   }
-
-  // Widget _producsList() {
-  //   return Column(
-  //     children: [
-  //       Row(
-  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //         children: [
-  //           // _headerOption(Icons.filter_3_rounded, 'Ativo', 0, false),
-  //           // _headerOption(Icons.filter_3_rounded, 'Cód. Interno', 0, true),
-  //           // _headerOption(Icons.filter_3_rounded, 'Código', 0, true),
-  //           // _headerOption(
-  //           //     Icons.filter_3_rounded, 'Descrição Abreviada', 0, true),
-  //           // _headerOption(Icons.filter_3_rounded, 'Unidade', 0, true),
-  //           // _headerOption(Icons.filter_3_rounded, 'Grupo', 0, true),
-  //           // _headerOption(Icons.filter_3_rounded, 'Preço de Venda', 0, true),
-  //           // _headerOption(Icons.filter_3_rounded, 'Preço de Custo', 0, true),
-  //           // _headerOption(Icons.filter_3_rounded, 'Ações', 0, true),
-  //         ],
-  //       ),
-  //       ListView.builder(
-  //         shrinkWrap: true,
-  //         itemCount: _productList.length,
-  //         itemBuilder: (context, index) {
-  //           final product = _productList[index];
-  //           return Row(
-  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //             children: [
-  //               const Icon(
-  //                 Icons.check,
-  //                 color: Colors.grey,
-  //               ),
-  //               Text(
-  //                 product.internalCode.toString(),
-  //                 style: const TextStyle(color: Colors.black54),
-  //                 textAlign: TextAlign.left,
-  //               ),
-  //               Text(
-  //                 product.code.toString(),
-  //                 style: const TextStyle(color: Colors.black54),
-  //                 textAlign: TextAlign.left,
-  //               ),
-  //               Text(
-  //                 product.description,
-  //                 style: const TextStyle(color: Colors.black54),
-  //                 textAlign: TextAlign.left,
-  //               ),
-  //               Text(
-  //                 product.unit,
-  //                 style: const TextStyle(color: Colors.black54),
-  //                 textAlign: TextAlign.left,
-  //               ),
-  //               Text(
-  //                 product.group,
-  //                 style: const TextStyle(color: Colors.black54),
-  //                 textAlign: TextAlign.left,
-  //               ),
-  //               Text(
-  //                 product.priceSales.toString(),
-  //                 style: const TextStyle(color: Colors.black54),
-  //                 textAlign: TextAlign.left,
-  //               ),
-  //               Text(
-  //                 product.costprice.toString(),
-  //                 style: const TextStyle(color: Colors.black54),
-  //                 textAlign: TextAlign.left,
-  //               ),
-  //               const Text(
-  //                 'Ação',
-  //                 style: TextStyle(color: Colors.black54),
-  //                 textAlign: TextAlign.left,
-  //               ),
-  //             ],
-  //           );
-  //         },
-  //       ),
-  //     ],
-  //   );
-  // }
 
   Widget _headerOption(
     IconData icon,
