@@ -9,21 +9,21 @@ class HeaderView extends StatelessWidget {
     return Container(
       color: WayColor.blueSecondary,
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(12),
         child: Row(
           //Com o mainAxisAlignment eu consigo fazer o alinhamento no eixo principal da linhha, que é o sentido horizontal.
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(
               'assets/images/logo.png',
-              height: 50,
+              height: 40,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
                   width: 300,
-                  height: 45,
+                  height: 40,
                   decoration: BoxDecoration(
                     color: WayColor.bluePrimary,
                     borderRadius: BorderRadius.circular(5),
@@ -47,8 +47,7 @@ class HeaderView extends StatelessWidget {
                             ),
                             Text(
                               'Matriz',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
+                              style: TextStyle(color: Colors.white, fontSize: 12),
                             ),
                           ],
                         ),

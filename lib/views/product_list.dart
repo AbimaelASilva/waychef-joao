@@ -40,7 +40,7 @@ class ProductList extends StatelessWidget {
       active: true,
       internalCode: 4,
       code: 04,
-      description: 'X-Frango',
+      description: 'Água',
       unit: 'UNIDADE(UND)',
       group: 'LANCHES',
       priceSales: 18.00,
@@ -50,7 +50,17 @@ class ProductList extends StatelessWidget {
       active: true,
       internalCode: 5,
       code: 05,
-      description: 'X-Farofa',
+      description: 'Refrig. Lata',
+      unit: 'UNIDADE(UND)',
+      group: 'LANCHES',
+      priceSales: 18.00,
+      costprice: 10.00,
+    ),
+    ProductModel(
+      active: true,
+      internalCode: 6,
+      code: 06,
+      description: 'Suco 600ml',
       unit: 'UNIDADE(UND)',
       group: 'LANCHES',
       priceSales: 18.00,
@@ -77,8 +87,7 @@ class ProductList extends StatelessWidget {
                   color: WayColor.blueSecondary,
                 ),
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -96,8 +105,7 @@ class ProductList extends StatelessWidget {
                                 child: TextField(
                                   decoration: InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white),
+                                      borderSide: BorderSide(color: Colors.white),
                                     ),
                                   ),
                                 )),
@@ -133,8 +141,7 @@ class ProductList extends StatelessWidget {
                   color: WayColor.bluePrimary,
                 ),
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -164,14 +171,11 @@ class ProductList extends StatelessWidget {
                         child: Container(
                           width: 16,
                           height: 16,
-                          decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(50)),
+                          decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(50)),
                           child: const Center(
                             child: Text(
                               '1',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 10),
+                              style: TextStyle(color: Colors.white, fontSize: 10),
                             ),
                           ),
                         ),
@@ -200,7 +204,7 @@ class ProductList extends StatelessWidget {
                           color: Colors.white,
                         ),
                         child: Padding(
-                          padding:  const EdgeInsets.symmetric(horizontal: 4),
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
                           child: Row(
                             children: const [
                               Text(
@@ -247,8 +251,7 @@ class ProductList extends StatelessWidget {
             _headerOption(Icons.filter_3_rounded, 'Ativo', 0, false, 1),
             _headerOption(Icons.filter_3_rounded, 'Cód. Interno', 0, true, 1),
             _headerOption(Icons.filter_3_rounded, 'Código', 0, true, 1),
-            _headerOption(
-                Icons.filter_3_rounded, 'Descrição Abreviada', 0, true, 3),
+            _headerOption(Icons.filter_3_rounded, 'Descrição Abreviada', 0, true, 3),
             _headerOption(Icons.filter_3_rounded, 'Unidade', 0, true, 1),
             _headerOption(Icons.filter_3_rounded, 'Grupo', 0, true, 1),
             _headerOption(Icons.filter_3_rounded, 'Preço de Venda', 0, true, 1),
@@ -436,15 +439,12 @@ class ProductList extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
-        mainAxisAlignment: showRightIcon
-            ? MainAxisAlignment.spaceBetween
-            : MainAxisAlignment.center,
+        mainAxisAlignment: showRightIcon ? MainAxisAlignment.spaceBetween : MainAxisAlignment.center,
         children: [
           Expanded(
             child: Text(
               text,
-              style: const TextStyle(
-                  color: Colors.black54, fontWeight: FontWeight.w600),
+              style: const TextStyle(color: Colors.black54, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
             ),

@@ -9,10 +9,10 @@ class NewProductOption extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Container(
-          decoration:  BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            color: WayColor.bluePrimary,
-          ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4),
+          color: WayColor.bluePrimary,
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Row(
