@@ -75,6 +75,7 @@ class ProductList extends StatelessWidget {
                   ),
                 ),
               ),
+              _tableHearder(),
               _table(),
               Container(
                 decoration: const BoxDecoration(
@@ -174,7 +175,7 @@ class ProductList extends StatelessWidget {
     );
   }
 
-  Widget _table() {
+  Widget _tableHearder() {
     return Observer(
       builder: (context) => Table(
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
@@ -204,99 +205,129 @@ class ProductList extends StatelessWidget {
               _headerOption(Icons.filter_3_rounded, 'Ações', 0, true, 1),
             ],
           ),
-          ...List<TableRow>.generate(controller.productsList.length, (index) {
-            final product = controller.productsList[index];
-            return TableRow(
-                decoration: BoxDecoration(
-                  color: index % 2 == 0 ? Colors.grey[200] : Colors.white,
-                ),
-                children: [
-                  const Icon(
-                    Icons.check,
-                    color: Colors.grey,
-                    size: 16,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 6),
-                    child: Text(
-                      product.internalCode.toString(),
-                      style: const TextStyle(color: Colors.black54),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 6),
-                    child: Text(
-                      product.code.toString(),
-                      style: const TextStyle(color: Colors.black54),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 6),
-                    child: Text(
-                      product.description,
-                      style: const TextStyle(color: Colors.black54),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 6),
-                    child: Text(
-                      product.unit,
-                      style: const TextStyle(color: Colors.black54),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 6),
-                    child: Text(
-                      product.group,
-                      style: const TextStyle(color: Colors.black54),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 6),
-                    child: Text(
-                      product.priceSales.toString(),
-                      style: const TextStyle(color: Colors.black54),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Text(
-                    product.costprice.toString(),
-                    style: const TextStyle(color: Colors.black54),
-                    textAlign: TextAlign.center,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          controller.setProductToEdit(product);
-                          controller.setIsNewProduct(false);
-                          controller.setShowProductList(false);
-                        },
-                        icon: Icon(
-                          Icons.edit,
-                          size: 18,
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () => controller.removeFromList(index),
-                        icon: Icon(
-                          Icons.delete_forever,
-                          size: 18,
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                    ],
-                  ),
-                ]);
-          }),
         ],
+      ),
+    );
+  }
+
+  Widget _table() {
+    return Observer(
+      builder: (context) => Flexible(
+        child: ListView(
+          shrinkWrap: true,
+          physics: const AlwaysScrollableScrollPhysics(),
+          children: [
+            Table(
+              defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+              border: TableBorder.all(color: Colors.grey[300]!),
+              columnWidths: const {
+                0: FlexColumnWidth(1),
+                1: FlexColumnWidth(1),
+                2: FlexColumnWidth(1),
+                3: FlexColumnWidth(3),
+                4: FlexColumnWidth(1),
+                5: FlexColumnWidth(1),
+                6: FlexColumnWidth(1),
+                7: FlexColumnWidth(1),
+                8: FlexColumnWidth(1),
+              },
+              children: [
+                ...List<TableRow>.generate(controller.productsList.length, (index) {
+                  final product = controller.productsList[index];
+                  return TableRow(
+                      decoration: BoxDecoration(
+                        color: index % 2 == 0 ? Colors.grey[200] : Colors.white,
+                      ),
+                      children: [
+                        const Icon(
+                          Icons.check,
+                          color: Colors.grey,
+                          size: 16,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Text(
+                            product.internalCode.toString(),
+                            style: const TextStyle(color: Colors.black54),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Text(
+                            product.code.toString(),
+                            style: const TextStyle(color: Colors.black54),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Text(
+                            product.description,
+                            style: const TextStyle(color: Colors.black54),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Text(
+                            product.unit,
+                            style: const TextStyle(color: Colors.black54),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Text(
+                            product.group,
+                            style: const TextStyle(color: Colors.black54),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Text(
+                            product.priceSales.toString(),
+                            style: const TextStyle(color: Colors.black54),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        Text(
+                          product.costprice.toString(),
+                          style: const TextStyle(color: Colors.black54),
+                          textAlign: TextAlign.center,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                controller.setProductToEdit(product);
+                                controller.setIsNewProduct(false);
+                                controller.setShowProductList(false);
+                              },
+                              icon: Icon(
+                                Icons.edit,
+                                size: 18,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () => controller.removeFromList(index),
+                              icon: Icon(
+                                Icons.delete_forever,
+                                size: 18,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ]);
+                }),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
