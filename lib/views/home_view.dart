@@ -29,21 +29,19 @@ class HomeView extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: Colors.grey[100],
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(_height * 0.33), // here the desired height
-          child: Column(
-            children: [
-              const HeaderComponent(),
-              const MenuComponent(),
-              CaminhoComponent(controller: _controller),
-              NewProductOptionComponent(controller: _controller),
-            ],
-          ),
-        ),
-        body: Observer(
-          builder: (context) => _controller.showProductList
-              ? ProductList(controller: _controller)
-              : RegisterEditProductComponent(controller: _controller),
+        body: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const HeaderComponent(),
+            const MenuComponent(),
+            CaminhoComponent(controller: _controller),
+            NewProductOptionComponent(controller: _controller),
+            Observer(
+              builder: (context) => _controller.showProductList
+                  ? ProductList(controller: _controller)
+                  : RegisterEditProductComponent(controller: _controller),
+            ),
+          ],
         ),
       ),
     );
