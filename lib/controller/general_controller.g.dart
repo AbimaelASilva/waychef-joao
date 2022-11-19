@@ -42,19 +42,35 @@ mixin _$GeneralController on _GeneralController, Store {
     });
   }
 
-  late final _$productListAtom =
-      Atom(name: '_GeneralController.productList', context: context);
+  late final _$isNewProductAtom =
+      Atom(name: '_GeneralController.isNewProduct', context: context);
 
   @override
-  ObservableList<ProductModel> get productList {
-    _$productListAtom.reportRead();
-    return super.productList;
+  bool get isNewProduct {
+    _$isNewProductAtom.reportRead();
+    return super.isNewProduct;
   }
 
   @override
-  set productList(ObservableList<ProductModel> value) {
-    _$productListAtom.reportWrite(value, super.productList, () {
-      super.productList = value;
+  set isNewProduct(bool value) {
+    _$isNewProductAtom.reportWrite(value, super.isNewProduct, () {
+      super.isNewProduct = value;
+    });
+  }
+
+  late final _$productsListAtom =
+      Atom(name: '_GeneralController.productsList', context: context);
+
+  @override
+  ObservableList<ProductModel> get productsList {
+    _$productsListAtom.reportRead();
+    return super.productsList;
+  }
+
+  @override
+  set productsList(ObservableList<ProductModel> value) {
+    _$productsListAtom.reportWrite(value, super.productsList, () {
+      super.productsList = value;
     });
   }
 
@@ -73,11 +89,121 @@ mixin _$GeneralController on _GeneralController, Store {
   }
 
   @override
-  void setShowProductList({required bool value}) {
+  void setShowProductList(bool value) {
     final _$actionInfo = _$_GeneralControllerActionController.startAction(
         name: '_GeneralController.setShowProductList');
     try {
-      return super.setShowProductList(value: value);
+      return super.setShowProductList(value);
+    } finally {
+      _$_GeneralControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIsNewProduct(bool value) {
+    final _$actionInfo = _$_GeneralControllerActionController.startAction(
+        name: '_GeneralController.setIsNewProduct');
+    try {
+      return super.setIsNewProduct(value);
+    } finally {
+      _$_GeneralControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDescription(String value) {
+    final _$actionInfo = _$_GeneralControllerActionController.startAction(
+        name: '_GeneralController.setDescription');
+    try {
+      return super.setDescription(value);
+    } finally {
+      _$_GeneralControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setShortDescription(String value) {
+    final _$actionInfo = _$_GeneralControllerActionController.startAction(
+        name: '_GeneralController.setShortDescription');
+    try {
+      return super.setShortDescription(value);
+    } finally {
+      _$_GeneralControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setUnit(String value) {
+    final _$actionInfo = _$_GeneralControllerActionController.startAction(
+        name: '_GeneralController.setUnit');
+    try {
+      return super.setUnit(value);
+    } finally {
+      _$_GeneralControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setGrop(String value) {
+    final _$actionInfo = _$_GeneralControllerActionController.startAction(
+        name: '_GeneralController.setGrop');
+    try {
+      return super.setGrop(value);
+    } finally {
+      _$_GeneralControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCoustPrice(String value) {
+    final _$actionInfo = _$_GeneralControllerActionController.startAction(
+        name: '_GeneralController.setCoustPrice');
+    try {
+      return super.setCoustPrice(value);
+    } finally {
+      _$_GeneralControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setPriceSales(String value) {
+    final _$actionInfo = _$_GeneralControllerActionController.startAction(
+        name: '_GeneralController.setPriceSales');
+    try {
+      return super.setPriceSales(value);
+    } finally {
+      _$_GeneralControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addOnList() {
+    final _$actionInfo = _$_GeneralControllerActionController.startAction(
+        name: '_GeneralController.addOnList');
+    try {
+      return super.addOnList();
+    } finally {
+      _$_GeneralControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeFromList(int index) {
+    final _$actionInfo = _$_GeneralControllerActionController.startAction(
+        name: '_GeneralController.removeFromList');
+    try {
+      return super.removeFromList(index);
+    } finally {
+      _$_GeneralControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void updateProduct() {
+    final _$actionInfo = _$_GeneralControllerActionController.startAction(
+        name: '_GeneralController.updateProduct');
+    try {
+      return super.updateProduct();
     } finally {
       _$_GeneralControllerActionController.endAction(_$actionInfo);
     }
@@ -88,7 +214,8 @@ mixin _$GeneralController on _GeneralController, Store {
     return '''
 productToEditOrRegister: ${productToEditOrRegister},
 showProductList: ${showProductList},
-productList: ${productList}
+isNewProduct: ${isNewProduct},
+productsList: ${productsList}
     ''';
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:waychef_joao/ui/way_colors.dart';
 
-class HeaderView extends StatelessWidget {
-  const HeaderView({super.key});
+class HeaderComponent extends StatelessWidget {
+  const HeaderComponent({super.key});
 
   @override
   Widget build(BuildContext context) {

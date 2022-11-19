@@ -5,8 +5,8 @@ import '../controller/general_controller.dart';
 late double _width = 0.0;
 late double _height = 0.0;
 
-class RegisterEditProduct extends StatelessWidget {
-  const RegisterEditProduct({
+class RegisterEditProductComponent extends StatelessWidget {
+  const RegisterEditProductComponent({
     required this.controller,
     super.key,
   });
@@ -72,12 +72,12 @@ class RegisterEditProduct extends StatelessWidget {
                       _containerModel(
                         _width * 0.2,
                         [
-                          _option('Situação do produto', 'Ativo', Icons.arrow_drop_down, _width * 0.2),
+                          _option('Situação do produto', 'Ativo', Icons.arrow_drop_down, _width * 0.2, (_) {}),
                           _option('Código | Código de Barras', controller.productToEditOrRegister.code.toString(), null,
-                              _width * 0.2),
+                              _width * 0.2, (_) {}),
                           _option('Código Interno', controller.productToEditOrRegister.internalCode.toString(), null,
-                              _width * 0.2),
-                          _option('Estoque atual (Geral)', '0,000', Icons.zoom_out_map, _width * 0.2),
+                              _width * 0.2, (_) {}),
+                          _option('Estoque atual (Geral)', '0,000', Icons.zoom_out_map, _width * 0.2, (_) {}),
                         ],
                       ),
                       Padding(
@@ -88,20 +88,20 @@ class RegisterEditProduct extends StatelessWidget {
                             _containerModel(
                               _width * 0.5,
                               [
-                                _option(
-                                    'Descrição', controller.productToEditOrRegister.description, null, _width * 0.5),
+                                _option('Descrição', controller.productToEditOrRegister.description, null, _width * 0.5,
+                                    controller.setDescription),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     _option('Descrição abreviada', controller.productToEditOrRegister.description, null,
-                                        _width * 0.2),
+                                        _width * 0.2, controller.setShortDescription),
                                     _option('Unidade medida', controller.productToEditOrRegister.unit,
-                                        Icons.arrow_drop_down, _width * 0.1),
-                                    _option(
-                                        'Grupo', controller.productToEditOrRegister.group, Icons.search, _width * 0.1),
+                                        Icons.arrow_drop_down, _width * 0.1, controller.setUnit),
+                                    _option('Grupo', controller.productToEditOrRegister.group, Icons.search,
+                                        _width * 0.1, controller.setGrop),
                                   ],
                                 ),
-                                _option('Tipo', 'Produto para revenda', Icons.arrow_drop_down, _width * 0.3),
+                                _option('Tipo', 'Produto para revenda', Icons.arrow_drop_down, _width * 0.3, (_) {}),
                               ],
                             ),
                             Padding(
@@ -112,22 +112,23 @@ class RegisterEditProduct extends StatelessWidget {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      _option('Mix de preços', 'Nenhum', Icons.arrow_drop_down, _width * 0.14),
+                                      _option('Mix de preços', 'Nenhum', Icons.arrow_drop_down, _width * 0.14, (_) {}),
                                       _option('Preço de custo', controller.productToEditOrRegister.costprice.toString(),
-                                          null, _width * 0.14),
+                                          null, _width * 0.14, controller.setCoustPrice),
                                       _option(
                                           'Preço de venda',
                                           controller.productToEditOrRegister.priceSales.toString(),
                                           null,
-                                          _width * 0.14),
+                                          _width * 0.14,
+                                          controller.setPriceSales),
                                     ],
                                   ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      _option('Margem de lucro', '0,00', null, _width * 0.14),
-                                      _option('Estoque mínimo', '0,00', null, _width * 0.14),
-                                      _option('Quantidade Máxima de venda', '0,00', null, _width * 0.14),
+                                      _option('Margem de lucro', '0,00', null, _width * 0.14, (_) {}),
+                                      _option('Estoque mínimo', '0,00', null, _width * 0.14, (_) {}),
+                                      _option('Quantidade Máxima de venda', '0,00', null, _width * 0.14, (_) {}),
                                     ],
                                   ),
                                 ],
@@ -229,7 +230,14 @@ class RegisterEditProduct extends StatelessWidget {
         ),
       );
 
-  Widget _option(String labelText, String editingText, IconData? icon, double widthTextField) => Padding(
+  Widget _option(
+    String labelText,
+    String editingText,
+    IconData? icon,
+    double widthTextField,
+    Function(String) setValue,
+  ) =>
+      Padding(
         padding: const EdgeInsets.only(bottom: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -244,6 +252,9 @@ class RegisterEditProduct extends StatelessWidget {
               child: TextField(
                 scrollPadding: EdgeInsets.zero,
                 controller: TextEditingController(text: editingText),
+                onChanged: (value) {
+                  setValue(value);
+                },
                 style: const TextStyle(fontSize: 12),
                 decoration: InputDecoration(
                   suffixIcon: Icon(icon),

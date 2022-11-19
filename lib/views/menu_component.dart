@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:waychef_joao/ui/way_colors.dart';
 
-class MenuView extends StatelessWidget {
-  const MenuView({super.key});
+class MenuComponent extends StatelessWidget {
+  const MenuComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,14 +12,12 @@ class MenuView extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6),
         child: Wrap(
-          
           direction: Axis.horizontal,
           children: [
             _menuOption(Icons.data_saver_off, 'Dashboard', 8, false),
             _menuOption(Icons.food_bank, 'Produtos', 32, true),
             _menuOption(Icons.person_outline_sharp, 'Clientes', 32, true),
-            _menuOption(
-                Icons.chrome_reader_mode_outlined, 'Finanças', 32, true),
+            _menuOption(Icons.chrome_reader_mode_outlined, 'Finanças', 32, true),
             _menuOption(Icons.search, 'Consultas Rápidas', 32, true),
             _menuOption(Icons.analytics, 'Análises e Relatórios', 32, true),
           ],
